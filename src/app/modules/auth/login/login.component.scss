@@ -191,7 +191,10 @@
 .step button{
   min-width: 60%;
 }
-
+.control-label{
+  color: #163b6d;
+  font-size: 14px;
+}
 .flex-center{
   display: flex;
   justify-content: center;
@@ -230,6 +233,7 @@
 .form-label{
   color: #163b6d;
   font-weight: 700;
+  text-transform: uppercase;
 }
 .form-input{
   border-radius: 8px !important;
@@ -246,4 +250,8 @@
   top: 8.0475px;
   z-index: 3;
   cursor: pointer;
+}
+.required-point:after{
+  content: "*";
+  color: red;
 }

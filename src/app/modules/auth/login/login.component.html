@@ -11,34 +11,34 @@
             <button class="btn-primary ant-btn ant-btn-primary ant-btn-round ant-btn-lg" nz-button nzshape="round">
               <div class="flex-center">
                 <svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="22" rx="11" fill="white"/><path d="M12.444 5.8V17H9.852V7.88H7.612V5.8H12.444Z" fill="black"/></svg>
-                <span style="margin-left: 10px;">Login by BSC Account</span>
+                <span style="margin-left: 10px;">{{ 'login_by_bsc_account' | translate }}</span>
               </div>
             </button>
           </div>
           <div class="align-center" style="margin-top: 20px;">
             <button nz-button class="btn-secondary ant-btn ant-btn-primary ant-btn-round ant-btn-lg" (click)="step2Actived = true" nzshape="round">
-              <span>Non BSC Account</span>
+              <span>{{ 'non_bsc_account' | translate }}</span>
             </button>
           </div>
         </div>
       </div>
       <div class="step step-2 {{step2Actived == true ? 'show': 'hide'}}">
         <form class="login-form" nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitLogin()">
-          <h2 class="form-label align-center" style="margin-bottom: 20px;">NON BSC ACCOUNT</h2>
-          <nz-form-label>User Name</nz-form-label>
+          <h2 class="form-label align-center" style="margin-bottom: 20px;">{{ 'non_bsc_account' | translate }}</h2>
+          <label class="control-label required-point">{{ 'user_name' | translate }}</label>
           <nz-form-item>
-            <nz-form-control nzErrorTip="This field is required">
+            <nz-form-control nzErrorTip="{{ 'error_field_required' | translate }}">
               <nz-input-group>
-                <input class="form-input" type="text" nz-input formControlName="userName" placeholder="User Name" />
+                <input class="form-input" type="text" nz-input formControlName="userName" placeholder="{{ 'user_name' | translate }}" />
               </nz-input-group>
             </nz-form-control>
           </nz-form-item>
-          <nz-form-label>Password</nz-form-label>
+          <label class="control-label required-point">{{ 'password' | translate }}</label>
           <nz-form-item>
-            <nz-form-control nzErrorTip="This field is required">
+            <nz-form-control nzErrorTip="{{ 'error_field_required' | translate }}">
               <nz-input-group>
                 <div class="password-wrapper">
-                  <input class="form-input" [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password" placeholder="Password" />
+                  <input class="form-input" [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password" placeholder="{{ 'password' | translate }}" />
                   <i class="icon-inner" nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
                 </div>
               </nz-input-group>
@@ -47,10 +47,10 @@
           <nz-form-item>
             <div class="ant-row" style="width: 100%;">
               <div class="ant-col ant-col-8 align-left">
-                <button class="form-btn btn-nonbg ant-btn ant-btn-round" nz-button (click)="step2Actived = false">Back</button>
+                <button class="form-btn btn-nonbg ant-btn ant-btn-round" nz-button (click)="step2Actived = false">{{ 'back' | translate }}</button>
               </div>
               <div class="ant-col ant-col-8 ant-col-offset-8 align-right">
-                <button class="form-btn btn-primary ant-btn ant-btn-round" nz-button>Login</button>
+                <button class="form-btn btn-primary ant-btn ant-btn-round" nz-button>{{ 'login' | translate }}</button>
               </div>
             </div>
           </nz-form-item>
@@ -59,15 +59,16 @@
     </div>
     <div class="select-languange">
       <div class="ant-row align-center" style="width: 100%;">
-        <strong class="ant-col-24" style="margin-bottom: 10px; color: #163b6d;">Choose language</strong> <br>
+        <strong class="ant-col-24" style="margin-bottom: 10px; color: #163b6d;">{{ 'choose_language' | translate }}</strong> <br>
         <div class="ant-col ant-col-24 select-wrapper">
           <nz-select
             [(ngModel)]="selectedValue"
             nzBorderless="true"
             nzSize="default"
-            [nzOptions]="languages"
             [nzShowArrow]="false"
+            (ngModelChange)="changeLanguage()"
           >
+            <nz-option *ngFor="let lang of languages" nzValue="{{lang.value}}" nzLabel="{{lang.value | translate}}"></nz-option>
           </nz-select>
           <svg viewBox="0 0 1024 1024" focusable="false" fill="currentColor" width="1em" height="1em" data-icon="caret-down" aria-hidden="true"><path d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"></path></svg>
         </div>

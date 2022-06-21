@@ -1,0 +1,14 @@
+{
+  "en": "English",
+  "jp": "Japanese",
+  "zh-cn": "Traditional Chinese",
+  "zh-tw": "Simplified Chinese",
+  "login_by_bsc_account": "Login by BSC Account",
+  "non_bsc_account": "Non BSC Account",
+  "choose_language": "Choose language",
+  "user_name": "User Name",
+  "password": "Password",
+  "back": "Back",
+  "login": "Login",
+  "error_field_required": "This field is required"
+}

@@ -1,0 +1,14 @@
+{
+  "en":"英語",
+  "jp":"日本人",
+  "zh-cn":"繁體中文",
+  "zh-tw":"简体中文",
+  "login_by_bsc_account": "用BSC賬戶登錄",
+  "non_bsc_account": "非BSC賬戶",
+  "choose_language": "選擇語言",
+  "user_name": "用戶名",
+  "password": "密碼",
+  "back": "返回",
+  "login": "登錄",
+  "error_field_required":"此字段是必需的。"
+}

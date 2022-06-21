@@ -1,0 +1,14 @@
+{
+  "en":"英語",
+  "jp":"日本語",
+  "zh-cn":"繁體中文",
+  "zh-tw":"简体中文",
+  "login_by_bsc_account": "BSCアカウントでログイン",
+  "non_bsc_account": "非BSCアカウント",
+  "choose_language": "言語を選択してください",
+  "user_name": "ユーザー名",
+  "password": "パスワード",
+  "back": "バック",
+  "login": "ログイン",
+  "error_field_required": "この項目は必須です。"
+}

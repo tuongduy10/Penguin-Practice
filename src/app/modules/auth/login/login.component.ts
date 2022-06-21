@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   logoUrl: string = "/assets/images/splashscreen.png";
   passwordVisible: boolean = true;
   step2Actived: boolean = false;
-  selectedValue: string = 'en';
+  selectedValue: string = localStorage.getItem('lang') as string || 'en';
   languages: any[] = [
     {
       value: "en",
@@ -22,17 +23,17 @@ export class LoginComponent implements OnInit {
       label: "Japanese"
     },
     {
-      value: "tcn",
+      value: "zh-cn",
       label: "Traditional Chinese"
     },
     {
-      value: "scn",
+      value: "zh-tw",
       label: "Simplified Chinese"
     }
   ];
 
   validateForm!: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private translate: TranslateService) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -43,5 +44,11 @@ export class LoginComponent implements OnInit {
 
   submitLogin(){
 
+  }
+
+  changeLanguage(){
+    const currentLang = this.selectedValue;
+    this.translate.use(currentLang);
+    localStorage.setItem('lang', currentLang);
   }
 }
