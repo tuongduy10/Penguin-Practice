@@ -134,6 +134,9 @@ nz-option-container{
   right: 0;
   border-radius: 0 10px 10px 0;
 }
+.ant-menu-inline .ant-menu-item::after {
+  border-right: none;
+}
 .ant-select-single.ant-select-open .ant-select-selection-item{
   color: #000000D9;
 }
@@ -150,4 +153,13 @@ nz-option-container{
   background-clip: padding-box;
   border-radius: 8px;
   box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px 0 #00000014, 0 9px 28px 8px #0000000d;
+}
+.global-fs-1 *{
+  font-size: 1rem;
+}
+.global-fs-2 *{
+  font-size: 1.2rem;
+}
+.global-fs-3 *{
+  font-size: 1.3rem;
 }

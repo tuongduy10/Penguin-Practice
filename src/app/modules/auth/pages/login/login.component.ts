@@ -1,6 +1,6 @@
 import { Languages } from 'src/app/core/constant/languanges';
 import { Router } from '@angular/router';
-import { LoginRequest } from '../../dtos/login.request';
+import { LoginRequest } from '../../dtos/requests/login.request';
 import { TranslateService } from '@ngx-translate/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

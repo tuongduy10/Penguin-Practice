@@ -11,7 +11,21 @@ export class HttpClientInterceptor implements HttpInterceptor{
 
   handleErrorResponse(response: HttpErrorResponse) {
     console.log("error---", response);
-    alert(response.error.message);
+    switch(response.status){
+      case 400:
+        if (response.error){
+          alert(response.error.message);
+        }else{
+          alert("Bad request!");
+        }
+        break;
+      case 401:
+        this.authService.logout()
+        break;
+      default:
+        alert(response.error.message);
+        break;
+    }
   }
   intercept(request: HttpRequest<any>, next: HttpHandler):  Observable<HttpEvent<any>> {
     let requestContent = request.clone({

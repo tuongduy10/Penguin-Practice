@@ -1,4 +1,4 @@
-import { UserProfile } from './../../../modules/auth/dtos/profile.response';
+import { UserProfile } from './../../../modules/auth/dtos/responses/profile.response';
 import { TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
@@ -16,20 +16,20 @@ export class MainLayoutComponent implements OnInit {
   isProfileVisible = false;
   languages = Languages;
   selectedLang = this.cookieService.get("lang");
-  username = "Administrator";
   profile!: UserProfile;
   constructor(
     private cookieService: CookieService,
     private translateService: TranslateService,
     private authService: AuthService
-  ) { }
-
-
-  ngOnInit(): void {
+  ) {
     this.authService.getProfile().subscribe((response: any) => {
       const profile: UserProfile = response.data;
       this.profile = profile;
     })
+  }
+
+
+  ngOnInit(): void {
   }
   changeLanguage(){
     const currentLang = this.selectedLang;

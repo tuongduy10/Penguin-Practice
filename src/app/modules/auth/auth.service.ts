@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { LoginRequest } from './dtos/login.request';
+import { LoginRequest } from './dtos/requests/login.request';
 import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -38,5 +38,8 @@ export class AuthService {
   }
   getProfile(){
     return this.httpClient.post("/user-service/oauth/profile/gets", {});
+  }
+  getInfos(){
+    return this.httpClient.post("/user-service/oauth/info", {});
   }
 }

@@ -17,7 +17,20 @@
       </a>
     </div>
     <div class="sidebar-wrapper">
-
+      <ul class="sidebar-menu" nz-menu nzMode="inline">
+        <li class="item" nz-menu-item>
+          <a class="item-link">
+            <span class="icon"><svg><use xlink:href="./assets/svg/icons.svg#home"></use></svg></span>
+            <span class="text">Home</span>
+          </a>
+        </li>
+        <li class="item" nz-menu-item>
+          <a class="item-link">
+            <span class="icon"><svg><use xlink:href="./assets/svg/icons.svg#database"></use></svg></span>
+            <span class="text">Master Data</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </nz-sider>
   <nz-layout>
@@ -85,7 +98,13 @@
                 </div>
               </li>
               <div class="divider"></div>
-              <li class="item notifications cursor-pointer">
+              <li
+                class="item notifications cursor-pointer"
+                nz-popover
+                nzPopoverTrigger="click"
+                [nzPopoverPlacement]="'bottomRight'"
+                [nzPopoverContent]="notificationTemplate"
+                >
                 <div class="badge flex-center">
                   <svg class="icon">
                     <use xlink:href="./assets/svg/icons.svg#bell"></use>
@@ -94,19 +113,38 @@
                 </div>
                 <div class="text">Notifications</div>
               </li>
+              <ng-template #notificationTemplate>
+                <div class="header-notification">
+                  <div class="header flex-between">
+                    <div class="left"></div>
+                    <li
+                      nz-popover
+                      nzPopoverTrigger="click"
+                      [nzPopoverPlacement]="'bottomRight'"
+                      [nzPopoverContent]="notificationActionTemplate"
+                      >
+                      <svg class="icon">
+                        <use xlink:href="./assets/svg/icons.svg#hamburger"></use>
+                      </svg>
+                    </li>
+                    <ng-template #notificationActionTemplate></ng-template>
+                  </div>
+                </div>
+              </ng-template>
               <div class="divider"></div>
               <li
                 class="item cursor-pointer"
                 nz-popover
                 nzPopoverTrigger="click"
                 [nzPopoverPlacement]="'bottomRight'"
-                [nzPopoverContent]="contentTemplate">
+                [nzPopoverContent]="userProfileTemplate"
+                *ngIf="profile">
                 <div class="header-ava">
                   <div class="text">{{profile.fullName[0]}}</div>
                 </div>
                 <div class="plain-text">{{profile.fullName}}</div>
               </li>
-              <ng-template #contentTemplate>
+              <ng-template #userProfileTemplate>
                 <div class="header-profile">
                   <div class="top flex-between align-center">
                     <div class="left">Boston Scientific</div>
@@ -141,7 +179,32 @@
         </div>
         <div class="header-wrapper-toggle cursor-pointer" (click)="isHeaderCollapsed =! isHeaderCollapsed" [style]="isHeaderCollapsed ? 'transform: rotate(-180deg)':''">
           <svg class="icon">
-            <use xlink:href="./assets/svg/icons.svg#hamburger"></use>
+            <symbol id="menu-right-toggle" viewBox="0 0 91.914 91.914" style="enable-background:new 0 0 91.914 91.914;">
+              <g>
+                <g>
+                  <rect x="1.124" width="89.666" height="14.089"></rect>
+                  <rect x="26.29" y="25.494" width="64.447" height="14.09"></rect>
+                  <rect x="1.124" y="52.33" width="89.666" height="14.09"></rect>
+                  <rect x="26.29" y="77.825" width="64.447" height="14.089"></rect>
+                </g>
+              </g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+              <g></g>
+            </symbol>
+            <use xlink:href="#menu-right-toggle"></use>
           </svg>
         </div>
       </div>
