@@ -1,1 +1,157 @@
-<p>main-layout works!</p>
+<nz-layout class="app-layout">
+  <div class="sidebar-toggle cursor-pointer" (click)="isSidebarCollapsed =! isSidebarCollapsed" [style]="isSidebarCollapsed ? 'transform: rotate(-180deg)':''">
+    <svg class="icon">
+      <use xlink:href="./assets/svg/icons.svg#hamburger"></use>
+    </svg>
+  </div>
+  <!-- Sidebar -->
+  <nz-sider
+    [class]="isSidebarCollapsed ? 'menu-sidebar sidebar-close' : 'menu-sidebar' "
+    nzCollapsible nzWidth="240px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isSidebarCollapsed"
+    [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a class="logo-link flex-center" routerLink="/">
+        <img class="logo" src="./assets/images/splashscreen.png" alt="logo">
+      </a>
+    </div>
+    <div class="sidebar-wrapper">
+
+    </div>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <div [class]="isHeaderCollapsed ? 'header-wrapper open':'header-wrapper'">
+          <div class="left">
+            <ul class="links">
+              <li class="item">
+                <a href="mailto:TBD@bsci.com?subject=[My Orders Inquiry]">
+                  <svg class="icon">
+                    <use xlink:href="./assets/svg/icons.svg#email-circle"></use>
+                  </svg>
+                  <span class="text">
+                    Order related inquiries <br> including how to use My Orders
+                  </span>
+                </a>
+              </li>
+              <li class="item">
+                <a href="">
+                  <svg class="icon">
+                    <use xlink:href="./assets/svg/icons.svg#question-circle"></use>
+                  </svg>
+                  <span class="text">
+                    Technical inquiries -<br>My Orders system or access issues
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="right">
+            <ul class="menu">
+              <li class="item">
+                <svg class="icon">
+                  <use xlink:href="./assets/svg/icons.svg#font-typo"></use>
+                </svg>
+                <div class="select-wrapper">
+                  <nz-select
+                    ngModel="default"
+                    nzBorderless="true"
+                    nzSize="default"
+                    nzSuffixIcon="caret-down"
+                  >
+                    <nz-option nzValue="default" nzLabel="Normal"></nz-option>
+                    <nz-option nzValue="1" nzLabel="1x"></nz-option>
+                    <nz-option nzValue="2" nzLabel="2x"></nz-option>
+                  </nz-select>
+                </div>
+              </li>
+              <div class="divider"></div>
+              <li class="item">
+                <svg class="icon">
+                  <use xlink:href="./assets/svg/icons.svg#earth"></use>
+                </svg>
+                <div class="select-wrapper">
+                  <nz-select
+                    [(ngModel)]="selectedLang"
+                    (ngModelChange)="changeLanguage()"
+                    nzBorderless="true"
+                    nzSize="default"
+                    nzSuffixIcon="caret-down"
+                  >
+                  <nz-option *ngFor="let l of languages" [nzValue]="l.key" [nzLabel]="'LANG.'+l.code | translate"></nz-option>
+                </nz-select>
+                </div>
+              </li>
+              <div class="divider"></div>
+              <li class="item notifications cursor-pointer">
+                <div class="badge flex-center">
+                  <svg class="icon">
+                    <use xlink:href="./assets/svg/icons.svg#bell"></use>
+                  </svg>
+                  <span class="badge-sup">80</span>
+                </div>
+                <div class="text">Notifications</div>
+              </li>
+              <div class="divider"></div>
+              <li
+                class="item cursor-pointer"
+                nz-popover
+                nzPopoverTrigger="click"
+                [nzPopoverPlacement]="'bottomRight'"
+                [nzPopoverContent]="contentTemplate">
+                <div class="header-ava">
+                  <div class="text">{{profile.fullName[0]}}</div>
+                </div>
+                <div class="plain-text">{{profile.fullName}}</div>
+              </li>
+              <ng-template #contentTemplate>
+                <div class="header-profile">
+                  <div class="top flex-between align-center">
+                    <div class="left">Boston Scientific</div>
+                    <div class="right">
+                      <button
+                        nz-button
+                        nzDanger
+                        nzType="text"
+                        (click)="logout()">Sign out</button>
+                    </div>
+                  </div>
+                  <div class="content flex">
+                    <div class="left">
+                      <div class="header-ava large">
+                        <div class="text">{{profile.fullName[0]}}</div>
+                      </div>
+                    </div>
+                    <div class="right">
+                      <div class="title">{{profile.fullName}}</div>
+                      <p>{{profile.email}}</p>
+                      <p>Role: {{profile.role.name}}</p>
+                      <div class="action">
+                        <a class="block align-left">Change password</a>
+                        <a class="block align-left">Switch country</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </ul>
+          </div>
+        </div>
+        <div class="header-wrapper-toggle cursor-pointer" (click)="isHeaderCollapsed =! isHeaderCollapsed" [style]="isHeaderCollapsed ? 'transform: rotate(-180deg)':''">
+          <svg class="icon">
+            <use xlink:href="./assets/svg/icons.svg#hamburger"></use>
+          </svg>
+        </div>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="content-inner">
+        <div class="page-content">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

@@ -1,0 +1,17 @@
+<h2 class="heading-label_horline"><span>{{ "country.select" | translate}}}</span></h2>
+<div class="countries">
+  <a class="item" [title]="getCountryName(c)" *ngFor="let c of countries" (click)="chooseCountry(c)">
+    <div class="inner">
+      <svg class="icon"><use [attr.xlink:href]="'./assets/svg/flags.svg#'+c"></use></svg>
+      <span class="text">{{ getCountryName(c) }}</span>
+    </div>
+  </a>
+</div>
+<div class="action flex-center">
+  <button (click)="logout()" nzdanger="" nz-button="" nzshape="round" class="ant-btn ant-btn-round ant-btn-dangerous">
+    <span>{{ "BTN_BACK" | translate }}</span>
+  </button>
+</div>
+<div class="footer">
+  <div class="text"> © Boston Scientific Corporation or its affiliates. All rights reserved </div>
+</div>

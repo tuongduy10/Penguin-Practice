@@ -1,0 +1,69 @@
+<div class="form-steps {{step2Actived == true ? 'active-2': 'active-1'}}">
+  <div class="step step-1 {{step2Actived == false ? 'show': 'hide'}}">
+    <div style="width: 100%;">
+      <div class="align-center" nzspan="24">
+        <button class="btn-primary ant-btn ant-btn-primary ant-btn-round ant-btn-lg" nz-button nzshape="round">
+          <div class="flex-center">
+            <svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="22" height="22" rx="11" fill="white"/><path d="M12.444 5.8V17H9.852V7.88H7.612V5.8H12.444Z" fill="black"/></svg>
+            <span style="margin-left: 10px;">{{ 'login.BY_BSC_ACCOUNT' | translate }}</span>
+          </div>
+        </button>
+      </div>
+      <div class="align-center" style="margin-top: 20px;">
+        <button nz-button class="btn-secondary ant-btn ant-btn-primary ant-btn-round ant-btn-lg" (click)="step2Actived = true" nzshape="round">
+          <span>{{ 'login.BY_EXTERNAL_ACCOUNT' | translate }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="step step-2 {{step2Actived == true ? 'show': 'hide'}}">
+    <form class="login-form" nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitLogin()">
+      <h2 class="form-label align-center" style="margin-bottom: 20px;">{{ 'login.BY_BSC_ACCOUNT' | translate }}</h2>
+      <label class="control-label required-point">{{ 'login.user_name' | translate }}</label>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="{{ 'error.required' | translate }}">
+          <nz-input-group>
+            <input class="form-input" type="text" nz-input formControlName="username" placeholder="{{ 'login.user_name' | translate }}" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <label class="control-label required-point">{{ 'login.password' | translate }}</label>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="{{ 'error.required' | translate }}">
+          <nz-input-group>
+            <div class="password-wrapper">
+              <input class="form-input" [type]="passwordVisible ? 'text' : 'password'" nz-input formControlName="password" placeholder="{{ 'required.password' | translate }}" />
+              <i class="icon-inner" nz-icon [nzType]="passwordVisible ? 'eye-invisible' : 'eye'" (click)="passwordVisible = !passwordVisible"></i>
+            </div>
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <div class="ant-row" style="width: 100%;">
+          <div class="ant-col ant-col-8 align-left">
+            <button class="form-btn btn-nonbg ant-btn ant-btn-round" nz-button (click)="step2Actived = false">{{ 'BTN_BACK' | translate }}</button>
+          </div>
+          <div class="ant-col ant-col-8 ant-col-offset-8 align-right">
+            <button [disabled]="validateForm.valid ? 'false':'true'" class="form-btn btn-primary ant-btn ant-btn-round" nz-button [nzLoading]="isLoginLoading">{{ 'BTN_LOGIN' | translate }}</button>
+          </div>
+        </div>
+      </nz-form-item>
+    </form>
+  </div>
+</div>
+<div class="select-languange">
+  <div class="ant-row align-center" style="width: 100%;">
+    <strong class="ant-col-24" style="margin-bottom: 10px; color: #163b6d;">{{ 'login.choose_lang' | translate }}</strong> <br>
+    <div class="ant-col ant-col-24 select-wrapper">
+      <nz-select
+        [(ngModel)]="selectedValue"
+        nzBorderless="true"
+        nzSize="default"
+        (ngModelChange)="changeLanguage()"
+        nzSuffixIcon="caret-down"
+      >
+        <nz-option *ngFor="let lang of languages" nzValue="{{lang.key}}" nzLabel="{{ 'LANG.'+lang.code | translate}}"></nz-option>
+      </nz-select>
+    </div>
+  </div>
+</div>

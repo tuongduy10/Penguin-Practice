@@ -1,21 +1,3 @@
-.btn-primary {
-  background: #1a457b;
-  border-color: #1a457b;
-  color: #fff;
-}
-.btn-primary:hover{
-  background: #325b87;
-}
-.btn-secondary{
-  background-color: #2e80ac;
-  border-color: #2e80ac;
-}
-.btn-nonbg{
-  color: #1a457b;
-  background: #fff;
-  border: 1px solid #1a457b;
-}
-
 .login-layout{
   width: 100vw;
   height: 100vh;
@@ -113,57 +95,24 @@
   }
 }
 
-.login-layout .right .select-languange{
+.select-languange{
   margin: auto;
   max-width: 55%;
 }
 @media only screen and (max-width: 1280px){
-  .login-layout .right .select-languange{
+  .select-languange{
     max-width: 60%;
   }
 }
 @media only screen and (max-width: 800px){
-  .login-layout .right .select-languange{
+  .select-languange{
     max-width: 80%;
   }
 }
-
-.align-center{
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-}
-.align-left{
-  text-align: left;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
-.align-right{
-  text-align: right;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
 .select-wrapper{
-  position: relative;
-  border: 1px solid #d9d9d9;
-  border-radius: 8px;
-  background-color: #fff;
-  nz-select{
-    width: 100%;
-  }
   *{
     color: #7e90aa;
   }
-}
-.select-wrapper:focus-within{
-  border-color: #325b87;
-  box-shadow: 0 0 0 2px #1a457b33;
-}
-.select-wrapper svg {
-  position: absolute;
-  top: 0; bottom: 0;
-  margin: auto 0;
-  right: 11px;
 }
 @media only screen and (max-width: 800px){
   .select-wrapper{
@@ -194,15 +143,6 @@
 .control-label{
   color: #163b6d;
   font-size: 14px;
-}
-.flex-center{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.flex-between{
-  display: flex;
-  justify-content: space-between;
 }
 .login-layout .right .form-steps .show{
   pointer-events: unset;
@@ -250,8 +190,4 @@
   top: 8.0475px;
   z-index: 3;
   cursor: pointer;
-}
-.required-point:after{
-  content: "*";
-  color: red;
 }

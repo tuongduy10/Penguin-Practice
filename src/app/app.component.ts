@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,10 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
   title = 'penguin-practice';
-  constructor(public translateService: TranslateService){
-    let lang = localStorage.getItem('lang') ?? 'en';
+  constructor(public translateService: TranslateService, private cookieService: CookieService){
+    let lang = this.cookieService.get('lang') || 'en';
     translateService.addLangs(['en','jp', 'zh-cn', 'zh-tw']);
     translateService.setDefaultLang(lang);
-    localStorage.setItem('lang', lang);
+    this.cookieService.set('lang', lang);
   }
 }

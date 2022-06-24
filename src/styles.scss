@@ -1,1 +1,153 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+.btn-primary {
+  background: #1a457b;
+  border-color: #1a457b;
+  color: #fff;
+}
+.btn-primary[disabled],
+.btn-primary[disabled]:hover,
+.btn-primary[disabled]:focus{
+  color: #00000040;
+  background: #f5f5f5;
+  border-color: #d9d9d9;
+  text-shadow: none;
+  box-shadow: none;
+}
+.btn-primary:hover{
+  background: #325b87;
+  border-color: #325b87;
+  color: #fff;
+}
+.btn-secondary,
+.btn-secondary:hover{
+  background-color: #2e80ac;
+  border-color: #2e80ac;
+}
+.btn-nonbg,
+.btn-nonbg:hover{
+  color: #1a457b;
+  background: #fff;
+  border: 1px solid #1a457b;
+}
+.align-center{
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.align-left{
+  text-align: left;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.align-right{
+  text-align: right;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.block{
+  display: block;
+}
+.flex{
+  display: flex;
+}
+.flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-between{
+  display: flex;
+  justify-content: space-between;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.required-point:after{
+  content: " *";
+  color: red;
+}
+.divider{
+  height: 25px;
+  width: 1px;
+  background-color: #99b2c7;
+}
+nz-option-container{
+  border-radius: 8px !important;
+  min-width: 200px;
+}
+.select-wrapper{
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  background-color: #fff;
+  nz-select{
+    width: 100%;
+  }
+}
+.select-wrapper:focus-within{
+  border-color: #325b87;
+  box-shadow: 0 0 0 2px #1a457b33;
+}
+.badge{
+  position: relative;
+  .badge-sup{
+    position: absolute;
+    z-index: auto;
+    min-width: 20px;
+    height: 20px;
+    color: #fff;
+    font-weight: 400;
+    line-height: 20px;
+    white-space: nowrap;
+    text-align: center;
+    background: #ff4d4f;
+    border-radius: 10px;
+    padding: 0 8px;
+  }
+}
+.header-wrapper .right .menu .item nz-badge nz-badge-sup{
+  right: 6px !important;
+}
+@media only screen and (max-width: 1024px) {
+  .header-wrapper .right .menu .item nz-badge nz-badge-sup{
+    right: 21px !important;
+    top: 11px !important;
+  }
+}
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  color: #1a457b;
+  background-color: #eaeffb;
+  font-weight: 700;
+  position: relative;
+}
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled)::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: #1a457b;
+  height: 100%;
+  top: 0;
+  right: 0;
+  border-radius: 0 10px 10px 0;
+}
+.ant-select-single.ant-select-open .ant-select-selection-item{
+  color: #000000D9;
+}
+.ant-popover-arrow{
+  right: 10px !important;
+}
+.ant-popover{
+  margin-right: 12px;
+  width: 350px;
+  transition: all .23s ease-in-out;
+}
+.ant-popover-inner{
+  background-color: #fff;
+  background-clip: padding-box;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px -4px #0000001f, 0 6px 16px 0 #00000014, 0 9px 28px 8px #0000000d;
+}

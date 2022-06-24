@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth-layout.component.scss']
 })
 export class AuthLayoutComponent implements OnInit {
-
+  backgroundUrl: string = "/assets/images/login-bg.jpg";
+  logoUrl: string = "/assets/images/splashscreen.png";
   constructor() { }
 
   ngOnInit(): void {
