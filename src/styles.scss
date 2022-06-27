@@ -140,13 +140,11 @@ nz-option-container{
 .ant-select-single.ant-select-open .ant-select-selection-item{
   color: #000000D9;
 }
+.ant-popover-inner-content{
+  padding: 0px;
+}
 .ant-popover-arrow{
   right: 10px !important;
-}
-.ant-popover{
-  margin-right: 12px;
-  width: 350px;
-  transition: all .23s ease-in-out;
 }
 .ant-popover-inner{
   background-color: #fff;

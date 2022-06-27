@@ -98,14 +98,13 @@
                 </div>
               </li>
               <div class="divider"></div>
-              <li
-                class="item notifications cursor-pointer"
-                nz-popover
-                nzPopoverTrigger="click"
-                [nzPopoverPlacement]="'bottomRight'"
-                [nzPopoverContent]="notificationTemplate"
+              <li class="item notifications cursor-pointer">
+                <div class="badge flex-center"
+                  nz-popover
+                  nzPopoverTrigger="click"
+                  nzPopoverPlacement="bottomRight"
+                  [nzPopoverContent]="notificationTemplate"
                 >
-                <div class="badge flex-center">
                   <svg class="icon">
                     <use xlink:href="./assets/svg/icons.svg#bell"></use>
                   </svg>
@@ -113,67 +112,18 @@
                 </div>
                 <div class="text">Notifications</div>
               </li>
-              <ng-template #notificationTemplate>
-                <div class="header-notification">
-                  <div class="header flex-between">
-                    <div class="left"></div>
-                    <li
-                      nz-popover
-                      nzPopoverTrigger="click"
-                      [nzPopoverPlacement]="'bottomRight'"
-                      [nzPopoverContent]="notificationActionTemplate"
-                      >
-                      <svg class="icon">
-                        <use xlink:href="./assets/svg/icons.svg#hamburger"></use>
-                      </svg>
-                    </li>
-                    <ng-template #notificationActionTemplate></ng-template>
-                  </div>
-                </div>
-              </ng-template>
               <div class="divider"></div>
-              <li
-                class="item cursor-pointer"
-                nz-popover
-                nzPopoverTrigger="click"
-                [nzPopoverPlacement]="'bottomRight'"
-                [nzPopoverContent]="userProfileTemplate"
-                *ngIf="profile">
-                <div class="header-ava">
+              <li class="item cursor-pointer" *ngIf="profile">
+                <div class="header-ava"
+                  nz-popover
+                  nzPopoverTrigger="click"
+                  nzPopoverPlacement="bottomRight"
+                  [nzPopoverContent]="userProfileTemplate"
+                >
                   <div class="text">{{profile.fullName[0]}}</div>
                 </div>
                 <div class="plain-text">{{profile.fullName}}</div>
               </li>
-              <ng-template #userProfileTemplate>
-                <div class="header-profile">
-                  <div class="top flex-between align-center">
-                    <div class="left">Boston Scientific</div>
-                    <div class="right">
-                      <button
-                        nz-button
-                        nzDanger
-                        nzType="text"
-                        (click)="logout()">Sign out</button>
-                    </div>
-                  </div>
-                  <div class="content flex">
-                    <div class="left">
-                      <div class="header-ava large">
-                        <div class="text">{{profile.fullName[0]}}</div>
-                      </div>
-                    </div>
-                    <div class="right">
-                      <div class="title">{{profile.fullName}}</div>
-                      <p>{{profile.email}}</p>
-                      <p>Role: {{profile.role.name}}</p>
-                      <div class="action">
-                        <a class="block align-left">Change password</a>
-                        <a class="block align-left">Switch country</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </ng-template>
             </ul>
           </div>
         </div>
@@ -218,3 +168,76 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
+<ng-template #notificationTemplate>
+  <div class="header-notification-wrapper">
+    <div class="header flex-between align-center">
+      <div class="left flex-between align-center">
+        <h2 class="title">Notifications</h2>
+        <div class="item cursor-pointer">
+          <svg class="icon">
+            <use xlink:href="./assets/svg/icons.svg#refresh"></use>
+          </svg>
+        </div>
+      </div>
+      <div class="right cursor-pointer"
+        nz-popover
+        nzPopoverTrigger="click"
+        nzPopoverPlacement="bottomRight"
+        [nzPopoverContent]="notificationActionTemplate"
+      >
+        <svg class="icon">
+          <use xlink:href="./assets/svg/icons.svg#hamburger"></use>
+        </svg>
+      </div>
+    </div>
+    <div class="top">
+      <div class="active filter-tag cursor-pointer">All</div>
+      <div class="filter-tag cursor-pointer">Read</div>
+      <div class="filter-tag cursor-pointer">Unread</div>
+    </div>
+    <cdk-virtual-scroll-viewport class="notification-content" itemSize="100">
+      <div class="list">
+        <div class="item">
+          <div class="content">656323396850 - LTC Replenishment has been created successfully and waiting for approval from Sales Manager / BUM</div>
+          <div class="time">27/06/2022 16:49:56</div>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</ng-template>
+<ng-template #notificationActionTemplate>
+  <div class="notification-action-wrapper">
+    <div><a>Mark all as read</a></div>
+    <div><a>Notification setting</a></div>
+  </div>
+</ng-template>
+<ng-template #userProfileTemplate>
+  <div class="header-profile-wrapper">
+    <div class="top flex-between align-center">
+      <div class="left">Boston Scientific</div>
+      <div class="right">
+        <button
+          nz-button
+          nzDanger
+          nzType="text"
+          (click)="logout()">Sign out</button>
+      </div>
+    </div>
+    <div class="content flex">
+      <div class="left">
+        <div class="header-ava large">
+          <div class="text">{{profile.fullName[0]}}</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="title">{{profile.fullName}}</div>
+        <p>{{profile.email}}</p>
+        <p>Role: {{profile.role.name}}</p>
+        <div class="action">
+          <a class="block align-left">Change password</a>
+          <a class="block align-left">Switch country</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
