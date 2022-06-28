@@ -411,6 +411,9 @@
   height: 20px;
   width: 20px;
 }
+.header-notification-wrapper .header .left .item.loading{
+  animation: spin 2s linear infinite;
+}
 .header-notification-wrapper .header .right{
   height: 20px;
   width: 20px;
@@ -604,4 +607,12 @@
   background-color: #fff;
   max-width: 100%;
   overflow-x: hidden;
+}
+@keyframes spin {
+  from {
+      transform:rotate(360deg);
+  }
+  to {
+      transform:rotate(0deg);
+  }
 }

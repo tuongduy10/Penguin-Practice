@@ -173,7 +173,7 @@
     <div class="header flex-between align-center">
       <div class="left flex-between align-center">
         <h2 class="title">Notifications</h2>
-        <div class="item cursor-pointer">
+        <div class="item cursor-pointer loading">
           <svg class="icon">
             <use xlink:href="./assets/svg/icons.svg#refresh"></use>
           </svg>
@@ -195,19 +195,25 @@
       <div class="{{ isReadActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getReadNotification()">Read</div>
       <div class="{{ isUnreadActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getUnreadNotification()">Unread</div>
     </div>
-    <cdk-virtual-scroll-viewport class="notification-content" itemSize="100">
-      <div class="list" *ngIf="notifications">
-        <div class="item {{noti.hasAlreadyRead ? '' : 'new'}}" *ngFor="let noti of notifications">
+    <cdk-virtual-scroll-viewport
+      class="notification-content"
+      itemSize="80"
+      minBufferPx="100"
+      maxBufferPx="200"
+      (scrolledIndexChange)="scrolledIndexChange()"
+      *ngIf="notifications">
+      <div class="list">
+        <li class="item {{ noti.hasAlreadyRead ? '' : 'new'}}" *cdkVirtualFor="let noti of notifications; trackBy: trackByIdx">
           <div class="content">{{ noti.title }}</div>
           <div class="time">{{ noti.createdDate | date: 'dd/MM/yyyy hh:mm:ss' }}</div>
-        </div>
+        </li>
       </div>
     </cdk-virtual-scroll-viewport>
   </div>
 </ng-template>
 <ng-template #notificationActionTemplate>
   <div class="notification-action-wrapper">
-    <div><a>Mark all as read</a></div>
+    <div><a (click)="markAllAsRead()">Mark all as read</a></div>
     <div><a>Notification setting</a></div>
   </div>
 </ng-template>
