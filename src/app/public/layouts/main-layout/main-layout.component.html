@@ -108,7 +108,7 @@
                   <svg class="icon">
                     <use xlink:href="./assets/svg/icons.svg#bell"></use>
                   </svg>
-                  <span class="badge-sup">80</span>
+                  <span class="badge-sup" *ngIf="unread > 0">{{unread}}</span>
                 </div>
                 <div class="text">Notifications</div>
               </li>
@@ -191,15 +191,15 @@
       </div>
     </div>
     <div class="top">
-      <div class="active filter-tag cursor-pointer">All</div>
-      <div class="filter-tag cursor-pointer">Read</div>
-      <div class="filter-tag cursor-pointer">Unread</div>
+      <div class="{{ isAllActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getAllNotification()">All</div>
+      <div class="{{ isReadActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getReadNotification()">Read</div>
+      <div class="{{ isUnreadActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getUnreadNotification()">Unread</div>
     </div>
     <cdk-virtual-scroll-viewport class="notification-content" itemSize="100">
-      <div class="list">
-        <div class="item">
-          <div class="content">656323396850 - LTC Replenishment has been created successfully and waiting for approval from Sales Manager / BUM</div>
-          <div class="time">27/06/2022 16:49:56</div>
+      <div class="list" *ngIf="notifications">
+        <div class="item {{noti.hasAlreadyRead ? '' : 'new'}}" *ngFor="let noti of notifications">
+          <div class="content">{{ noti.title }}</div>
+          <div class="time">{{ noti.createdDate | date: 'dd/MM/yyyy hh:mm:ss' }}</div>
         </div>
       </div>
     </cdk-virtual-scroll-viewport>
