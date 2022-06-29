@@ -24,6 +24,7 @@ import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 registerLocaleData(en);
 
@@ -46,6 +47,7 @@ registerLocaleData(en);
     NzBadgeModule,
     NzPopoverModule,
     NzButtonModule,
+    NzMessageModule,
     ScrollingModule,
     TranslateModule.forRoot({
       loader: {

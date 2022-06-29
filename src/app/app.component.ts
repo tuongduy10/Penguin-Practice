@@ -9,8 +9,11 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AppComponent {
   title = 'penguin-practice';
-  constructor(public translateService: TranslateService, private cookieService: CookieService){
-    let lang = this.cookieService.get('lang') || 'en';
+  constructor(
+    public translateService: TranslateService,
+    private cookieService: CookieService,
+  ){
+    const lang = this.cookieService.get('lang') || 'en';
     translateService.addLangs(['en','jp', 'zh-cn', 'zh-tw']);
     translateService.setDefaultLang(lang);
     this.cookieService.set('lang', lang);

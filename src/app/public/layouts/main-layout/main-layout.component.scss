@@ -117,8 +117,8 @@
   flex-direction: row;
 }
 
-.item:hover .item-link,
-.ant-menu-item-selected .item-link{
+.sidebar-menu .item:hover .item-link,
+.sidebar-menu .item .item-link.active{
   background-color: #1a457b;
   border-radius: 5px;
   .icon{
@@ -251,7 +251,7 @@
     max-width: 100%;
     width: 100%;
     transition: all .23s linear;
-    font-size: .75rem;
+    font-size: .95rem;
   }
 }
 @media only screen and(max-width: 1024px){
@@ -330,7 +330,7 @@
   align-items: center;
   padding: 0 15px;
   color: #000;
-  font-size: .95rem;
+  font-size: .95rem !important;
   position: relative;
   .icon{
     width: 20px;
@@ -338,6 +338,11 @@
     margin: 5px;
   }
 }
+
+  .ant-select-selection-item{
+    font-size: .95rem !important;
+  }
+
 @media only screen and (max-width: 1024px){
   .header-wrapper .left .links .item,
   .header-wrapper .right .menu .item{

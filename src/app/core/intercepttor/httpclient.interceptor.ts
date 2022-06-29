@@ -1,13 +1,15 @@
+import { UserProfile } from './../../modules/auth/dtos/responses/profile.response';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, Observable, throwError } from "rxjs";
 import { AuthService } from "src/app/modules/auth/auth.service";
 import { API_BASE_URL } from "../constant/api-baseurl";
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class HttpClientInterceptor implements HttpInterceptor{
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService){ }
 
   handleErrorResponse(response: HttpErrorResponse) {
     console.log("error---", response);
@@ -36,9 +38,11 @@ export class HttpClientInterceptor implements HttpInterceptor{
       responseType: "json",
     });
 
-    return next.handle(requestContent).pipe(catchError((response: HttpErrorResponse) => {
-      this.handleErrorResponse(response)
-      return throwError(() => response.error);
-    }));
+    return next.handle(requestContent).pipe(
+      catchError((response: HttpErrorResponse) => {
+        this.handleErrorResponse(response)
+        return throwError(() => response.error);
+      })
+    );
   }
 }

@@ -1,3 +1,4 @@
+import { FontSizeOptions } from './../../../core/constant/fontsizes';
 import { NotificationPageRequest } from '../../../core/services/notification/dtos/notification.request';
 import { NotificationService } from '../../../core/services/notification/notification.service';
 import { UserProfile } from './../../../modules/auth/dtos/responses/profile.response';
@@ -9,6 +10,7 @@ import { AuthService } from 'src/app/modules/auth/auth.service';
 import { EnumNotification } from 'src/app/core/services/notification/enum/notification.enum';
 import { NotificationModel } from 'src/app/core/services/notification/dtos/notification.model';
 import { CdkVirtualScrollViewport } from "@angular/cdk/scrolling";
+import { NzMessageService } from 'ng-zorro-antd/message';
 import { concat } from 'lodash';
 
 @Component({
@@ -22,7 +24,9 @@ export class MainLayoutComponent implements OnInit {
   isSidebarCollapsed = false;
   isHeaderCollapsed = false;
   languages = Languages;
-  selectedLang = this.cookieService.get("lang");
+  fontSizeOptions = FontSizeOptions;
+  selectedLang!:string;
+  selectedFontSize!:string;
   unread = 0;
   profile!: UserProfile;
   totalPages!: number;
@@ -32,7 +36,8 @@ export class MainLayoutComponent implements OnInit {
     private cookieService: CookieService,
     private translateService: TranslateService,
     private authService: AuthService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private message: NzMessageService
   ) { }
 
   notifications: NotificationModel[] = [];
@@ -45,9 +50,17 @@ export class MainLayoutComponent implements OnInit {
   };
   ngOnInit(): void {
     this.authService.getProfile().subscribe((response: any) => {
+      // profile
       const profile: UserProfile = response.data;
       this.profile = profile;
-      this.notiPageRequest.userId = profile.id
+      // languages
+      this.translateService.use(profile.language);
+      this.selectedLang = profile.language;
+      // fontsize
+      this.selectedFontSize = profile.fontSize;
+      document.body.classList.value = "global-fs-" + profile.fontSize;
+      // notifications
+      this.notiPageRequest.userId = profile.id;
       this.getUnread(profile.id);
       this.getAllNotification();
     })
@@ -114,8 +127,20 @@ export class MainLayoutComponent implements OnInit {
   }
   changeLanguage(){
     const currentLang = this.selectedLang;
-    this.translateService.use(currentLang);
-    this.cookieService.set('lang', currentLang);
+    const request = { ...this.profile, language: currentLang }
+    this.authService.updateProfile(request).subscribe((response: any) => {
+      this.translateService.use(currentLang);
+      this.cookieService.set('lang', currentLang);
+      this.message.create('success', this.translateService.instant('STATUS.SUCCESS'));
+    });
+  }
+  changeFontSize(){
+    const currentFontSize = this.selectedFontSize;
+    document.body.classList.value = "global-fs-" + currentFontSize;
+    const request = { ...this.profile, fontSize: currentFontSize }
+    this.authService.updateProfile(request).subscribe((response: any) => {
+      this.message.create('success', this.translateService.instant('STATUS.SUCCESS'));
+    });
   }
   logout(){
     this.authService.logout();
@@ -164,6 +189,5 @@ export class MainLayoutComponent implements OnInit {
     });
   }
   refreshNotification(){
-
   }
 }

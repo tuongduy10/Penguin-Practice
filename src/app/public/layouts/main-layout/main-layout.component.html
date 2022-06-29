@@ -12,20 +12,20 @@
     [(nzCollapsed)]="isSidebarCollapsed"
     [nzTrigger]="null">
     <div class="sidebar-logo">
-      <a class="logo-link flex-center" routerLink="/">
+      <a class="logo-link flex-center" routerLink="/home">
         <img class="logo" src="./assets/images/splashscreen.png" alt="logo">
       </a>
     </div>
     <div class="sidebar-wrapper">
       <ul class="sidebar-menu" nz-menu nzMode="inline">
         <li class="item" nz-menu-item>
-          <a class="item-link">
+          <a class="item-link" routerLink="/tw/home" routerLinkActive="active">
             <span class="icon"><svg><use xlink:href="./assets/svg/icons.svg#home"></use></svg></span>
             <span class="text">Home</span>
           </a>
         </li>
         <li class="item" nz-menu-item>
-          <a class="item-link">
+          <a class="item-link" routerLinkActive="active">
             <span class="icon"><svg><use xlink:href="./assets/svg/icons.svg#database"></use></svg></span>
             <span class="text">Master Data</span>
           </a>
@@ -44,8 +44,7 @@
                   <svg class="icon">
                     <use xlink:href="./assets/svg/icons.svg#email-circle"></use>
                   </svg>
-                  <span class="text">
-                    Order related inquiries <br> including how to use My Orders
+                  <span class="text" [innerHTML]="'HEAD.LINK_CUSTOMER_SERV' | translate">
                   </span>
                 </a>
               </li>
@@ -54,8 +53,7 @@
                   <svg class="icon">
                     <use xlink:href="./assets/svg/icons.svg#question-circle"></use>
                   </svg>
-                  <span class="text">
-                    Technical inquiries -<br>My Orders system or access issues
+                  <span class="text" [innerHTML]="'HEAD.LINK_IT_SERV' | translate">
                   </span>
                 </a>
               </li>
@@ -67,26 +65,26 @@
                 <svg class="icon">
                   <use xlink:href="./assets/svg/icons.svg#font-typo"></use>
                 </svg>
-                <div class="select-wrapper">
+                <span class="text">
                   <nz-select
-                    ngModel="default"
+                    *ngIf="selectedFontSize"
+                    [(ngModel)]="selectedFontSize"
+                    (ngModelChange)="changeFontSize()"
                     nzBorderless="true"
-                    nzSize="default"
                     nzSuffixIcon="caret-down"
                   >
-                    <nz-option nzValue="default" nzLabel="Normal"></nz-option>
-                    <nz-option nzValue="1" nzLabel="1x"></nz-option>
-                    <nz-option nzValue="2" nzLabel="2x"></nz-option>
-                  </nz-select>
-                </div>
+                  <nz-option *ngFor="let f of fontSizeOptions" nzValue="{{f.key}}" nzLabel="{{'HEAD.'+f.value | translate}}"></nz-option>
+                </nz-select>
+                </span>
               </li>
               <div class="divider"></div>
               <li class="item">
                 <svg class="icon">
                   <use xlink:href="./assets/svg/icons.svg#earth"></use>
                 </svg>
-                <div class="select-wrapper">
+                <span class="text">
                   <nz-select
+                    *ngIf="selectedLang"
                     [(ngModel)]="selectedLang"
                     (ngModelChange)="changeLanguage()"
                     nzBorderless="true"
@@ -95,7 +93,7 @@
                   >
                   <nz-option *ngFor="let l of languages" [nzValue]="l.key" [nzLabel]="'LANG.'+l.code | translate"></nz-option>
                 </nz-select>
-                </div>
+                </span>
               </li>
               <div class="divider"></div>
               <li class="item notifications cursor-pointer">
@@ -172,7 +170,7 @@
   <div class="header-notification-wrapper">
     <div class="header flex-between align-center">
       <div class="left flex-between align-center">
-        <h2 class="title">Notifications</h2>
+        <h2 class="title">{{ "HEAD.NOTIFICATION" | translate }}</h2>
         <div class="item cursor-pointer loading">
           <svg class="icon">
             <use xlink:href="./assets/svg/icons.svg#refresh"></use>
@@ -191,9 +189,9 @@
       </div>
     </div>
     <div class="top">
-      <div class="{{ isAllActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getAllNotification()">All</div>
-      <div class="{{ isReadActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getReadNotification()">Read</div>
-      <div class="{{ isUnreadActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getUnreadNotification()">Unread</div>
+      <div class="{{ isAllActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getAllNotification()">{{ "HEAD.ALL" | translate }}</div>
+      <div class="{{ isReadActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getReadNotification()">{{ "HEAD.READ" | translate }}</div>
+      <div class="{{ isUnreadActive ? 'active':'' }} filter-tag cursor-pointer" (click)="getUnreadNotification()">{{ "HEAD.UNREAD" | translate }}</div>
     </div>
     <cdk-virtual-scroll-viewport
       class="notification-content"
@@ -213,8 +211,8 @@
 </ng-template>
 <ng-template #notificationActionTemplate>
   <div class="notification-action-wrapper">
-    <div><a (click)="markAllAsRead()">Mark all as read</a></div>
-    <div><a>Notification setting</a></div>
+    <div><a (click)="markAllAsRead()">{{ "HEAD.MARK_ALL_AS_READ" | translate}}</a></div>
+    <div><a>{{ "HEAD.NOTI_SETTING" | translate}}</a></div>
   </div>
 </ng-template>
 <ng-template #userProfileTemplate>
@@ -226,7 +224,7 @@
           nz-button
           nzDanger
           nzType="text"
-          (click)="logout()">Sign out</button>
+          (click)="logout()">{{ "HEAD.LOG_OUT" | translate }}</button>
       </div>
     </div>
     <div class="content flex">
@@ -238,10 +236,10 @@
       <div class="right">
         <div class="title">{{profile.fullName}}</div>
         <p>{{profile.email}}</p>
-        <p>Role: {{profile.role.name}}</p>
+        <p>{{ "ADMIN.ROLE.title" | translate }}: {{profile.role.name}}</p>
         <div class="action">
-          <a class="block align-left">Change password</a>
-          <a class="block align-left">Switch country</a>
+          <a class="block align-left">{{ "COMMON.CHANGE_PASS" | translate }}</a>
+          <a class="block align-left">{{ "login.SWITCH_COUNTRY" | translate }}</a>
         </div>
       </div>
     </div>
