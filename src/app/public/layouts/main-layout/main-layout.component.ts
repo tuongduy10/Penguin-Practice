@@ -57,8 +57,8 @@ export class MainLayoutComponent implements OnInit {
       this.translateService.use(profile.language);
       this.selectedLang = profile.language;
       // fontsize
-      this.selectedFontSize = profile.fontSize;
-      document.body.classList.value = "global-fs-" + profile.fontSize;
+      this.selectedFontSize = profile.fontSize ?? "0";
+      document.body.classList.value = "global-fs-" + (profile.fontSize ?? "0");
       // notifications
       this.notiPageRequest.userId = profile.id;
       this.getUnread(profile.id);
@@ -98,6 +98,7 @@ export class MainLayoutComponent implements OnInit {
         this.totalElements = response.meta.totalElements;
         this.pageNumber = response.meta.pageNumber;
       }
+      this.isRefreshLoading = false;
     });
   }
   getNewNotification(currentData: NotificationModel[]){
@@ -188,6 +189,11 @@ export class MainLayoutComponent implements OnInit {
       }
     });
   }
+  isRefreshLoading = false;
   refreshNotification(){
+    this.isRefreshLoading = true;
+    this.notiPageRequest.pageNumber = 1;
+    this.notiPageRequest.status = EnumNotification.All;
+    this.getNotification();
   }
 }

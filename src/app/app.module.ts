@@ -25,6 +25,7 @@ import { NzPopoverModule } from 'ng-zorro-antd/popover';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { NzMessageModule } from 'ng-zorro-antd/message';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 registerLocaleData(en);
 
@@ -49,6 +50,7 @@ registerLocaleData(en);
     NzButtonModule,
     NzMessageModule,
     ScrollingModule,
+    NzToolTipModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -62,7 +64,8 @@ registerLocaleData(en);
     { provide: HTTP_INTERCEPTORS, useClass: HttpClientInterceptor, multi: true },
     CookieService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[TranslateModule]
 })
 export class AppModule { }
 

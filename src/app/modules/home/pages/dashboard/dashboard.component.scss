@@ -1,0 +1,98 @@
+.boxes-inline{
+  white-space: nowrap;
+  overflow: auto hidden;
+}
+.boxes{
+  display: block;
+  margin: 0 auto 12px;
+  &-title{
+    padding: 12px 0;
+    border-bottom: 1px solid #dce6ef;
+    font-size: 14px!important;
+    color: #1a457b;
+    margin: 10px auto 15px;
+  }
+  .box.type-1{
+    box-sizing: border-box;
+    width: 170px;
+    height: 140px;
+    display: inline-block;
+    .content{
+      border: 1px solid #dce6ef;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #000;
+      flex-direction: column;
+      padding: 10px;
+      margin: 0 10px 10px 0;
+      max-height: 100%;
+      min-height: calc(100% - 10px);
+      transition: all .13s linear;
+      box-sizing: border-box;
+      overflow: hidden;
+      &:hover{
+        border: 1px solid #1a457b99;
+        box-shadow: 0 0 4px #dce6ef;
+        .icon{
+          transform: scale(.95);
+          filter: drop-shadow(0 0 4px #dce6ef);
+        }
+      }
+      .icon{
+        width: 35px;
+        height: 35px;
+        margin: 17.5px auto;
+      }
+      .text{
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+      }
+      *{
+        transition: all .13s linear;
+      }
+    }
+  }
+  .box.type-2{
+    box-sizing: border-box;
+    width: 200px;
+    height: 120px;
+    display: inline-block;
+    overflow: hidden;
+    .content{
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #000;
+      flex-direction: column;
+      padding: 10px;
+      margin: 0 10px 10px 0;
+      min-height: calc(100% - 5px);
+      transition: all .13s linear;
+      box-sizing: border-box;
+      overflow: hidden;
+      &:hover{
+        box-shadow: 0 0 18px #dce6ef;
+      }
+      .text{
+        display: block;
+        white-space: pre-wrap;
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+      }
+      *{
+        transition: all .13s linear;
+      }
+    }
+  }
+}

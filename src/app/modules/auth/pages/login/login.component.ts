@@ -26,7 +26,9 @@ export class LoginComponent implements OnInit {
     private translate: TranslateService,
     private cookieService: CookieService,
     private authService: AuthService
-  ) { }
+  ) {
+    document.body.classList.value = "global-fs-0";
+  }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({

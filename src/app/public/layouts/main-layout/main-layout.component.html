@@ -31,6 +31,8 @@
           </a>
         </li>
       </ul>
+      <div class="sidebar-copy">{{ 'copyright' | translate }}</div>
+      <div class="sidebar-version">#22/06/29:1426_TW_ver_#66</div>
     </div>
   </nz-sider>
   <nz-layout>
@@ -40,7 +42,11 @@
           <div class="left">
             <ul class="links">
               <li class="item">
-                <a href="mailto:TBD@bsci.com?subject=[My Orders Inquiry]">
+                <a href="mailto:TBD@bsci.com?subject=[My Orders Inquiry]"
+                  nzPopoverPlacement="bottomLeft"
+                  nz-popover
+                  [nzPopoverContent]="tooltipCustumerServe"
+                >
                   <svg class="icon">
                     <use xlink:href="./assets/svg/icons.svg#email-circle"></use>
                   </svg>
@@ -49,7 +55,11 @@
                 </a>
               </li>
               <li class="item">
-                <a href="">
+                <a href=""
+                  nzPopoverPlacement="bottomLeft"
+                  nz-popover
+                  [nzPopoverContent]="tooltipITServe"
+                >
                   <svg class="icon">
                     <use xlink:href="./assets/svg/icons.svg#question-circle"></use>
                   </svg>
@@ -73,7 +83,7 @@
                     nzBorderless="true"
                     nzSuffixIcon="caret-down"
                   >
-                  <nz-option *ngFor="let f of fontSizeOptions" nzValue="{{f.key}}" nzLabel="{{'HEAD.'+f.value | translate}}"></nz-option>
+                  <nz-option [nzHide]="selectedFontSize == f.key" *ngFor="let f of fontSizeOptions" nzValue="{{f.key}}" nzLabel="{{'HEAD.'+f.value | translate}}"></nz-option>
                 </nz-select>
                 </span>
               </li>
@@ -91,7 +101,7 @@
                     nzSize="default"
                     nzSuffixIcon="caret-down"
                   >
-                  <nz-option *ngFor="let l of languages" [nzValue]="l.key" [nzLabel]="'LANG.'+l.code | translate"></nz-option>
+                  <nz-option [nzHide]="selectedLang == l.key" *ngFor="let l of languages" [nzValue]="l.key" [nzLabel]="'LANG.'+l.code | translate"></nz-option>
                 </nz-select>
                 </span>
               </li>
@@ -166,12 +176,22 @@
     </nz-content>
   </nz-layout>
 </nz-layout>
+<ng-template #tooltipCustumerServe>
+  <div class="header-tooltip-wrapper">
+    <span class="content" [innerHTML]="'HEAD.LINK_CUSTOMER_SERV' | translate"></span>
+  </div>
+</ng-template>
+<ng-template #tooltipITServe>
+  <div class="header-tooltip-wrapper">
+    <span class="content" [innerHTML]="'HEAD.LINK_IT_SERV' | translate"></span>
+  </div>
+</ng-template>
 <ng-template #notificationTemplate>
   <div class="header-notification-wrapper">
     <div class="header flex-between align-center">
       <div class="left flex-between align-center">
         <h2 class="title">{{ "HEAD.NOTIFICATION" | translate }}</h2>
-        <div class="item cursor-pointer loading">
+        <div (click)="refreshNotification()" class="item cursor-pointer {{ isRefreshLoading ? 'loading' : ''}}">
           <svg class="icon">
             <use xlink:href="./assets/svg/icons.svg#refresh"></use>
           </svg>
@@ -221,6 +241,7 @@
       <div class="left">Boston Scientific</div>
       <div class="right">
         <button
+          class="logout"
           nz-button
           nzDanger
           nzType="text"

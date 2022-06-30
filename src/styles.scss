@@ -3,6 +3,9 @@
 *{
   font-family: 'Montserrat', sans-serif;
 }
+html{
+  font-size: 13px;
+}
 ::-webkit-scrollbar{
   width: 8px;
   height: 8px;
@@ -121,6 +124,10 @@ nz-option-container{
     padding: 0 8px;
   }
 }
+.header-profile-wrapper .top .left,
+.header-profile-wrapper .top .right .logout *{
+  font-size: .9rem;
+}
 .header-wrapper .right .menu .item nz-badge nz-badge-sup{
   right: 6px !important;
 }
@@ -173,6 +180,34 @@ nz-option-container{
 .ant-select-selection-item{
   font-size: .95rem !important;
 }
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  color: #1a457b;
+  background-color: #eaeffb;
+  font-weight: 700;
+  position: relative;
+}
+.ant-select-item-option-active:not(.ant-select-item-option-disabled):before{
+  content: "";
+  position: absolute;
+  width: 4px;
+  background-color: #1a457b;
+  height: 100%;
+  top: 0;
+  right: 0;
+  border-radius: 0 10px 10px 0;
+}
+.ant-tooltip{
+  transition: all .23s ease;
+}
+.ant-tooltip-arrow-content{
+  --antd-arrow-background-color: #fff;
+}
+.ant-tooltip-inner{
+  border-radius: 8px;
+  background-color: #fff;
+  color: #7e90aa;
+}
+
 .global-fs-0 *{
   font-size: 1rem;
 }

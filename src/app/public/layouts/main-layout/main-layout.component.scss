@@ -154,6 +154,32 @@
   min-width: 0 !important;
   width: 0 !important;
 }
+.sidebar-copy{
+  color: #1a457b;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px 4px;
+  font-size: .9rem;
+}
+.sidebar-version{
+  position: absolute;
+  bottom: 2px;
+  right: 50%;
+  transform: translateX(50%);
+  width: auto;
+  min-width: 175px;
+  text-align: center;
+  padding: 1px 6px;
+  border-radius: 4px;
+  color: #1a457b;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px #1a457b;
+  background-color: #fff;
+  font-size: 10px!important;
+}
 .app-header,
 .ant-layout-header{
   height: 80px;
@@ -212,6 +238,12 @@
 @media only screen and (max-width: 1367px) and (min-width: 1025px){
   .header-wrapper .left{
     width: 30%;
+  }
+}
+.header-tooltip-wrapper{
+  padding: 6px 8px;
+  .content{
+    color: #7e90aa;
   }
 }
 .header-wrapper .left .links{
@@ -339,9 +371,6 @@
   }
 }
 
-  .ant-select-selection-item{
-    font-size: .95rem !important;
-  }
 
 @media only screen and (max-width: 1024px){
   .header-wrapper .left .links .item,
@@ -387,6 +416,9 @@
 .header-ava.large{
   height: 45px;
   width: 45px;
+  .text{
+    font-size: 1.73em!important;
+  }
 }
 .plain-text{
   display: none;
@@ -437,6 +469,7 @@
     border-radius: 7px;
     border: 1px solid #1a457b;
     transition: all .5s ease-out;
+    font-size: .9rem!important;
   }
 }
 @media only screen and (max-width: 1024px){
@@ -502,12 +535,12 @@
   position: relative;
   .content{
     color: #000;
-    font-size: 1em;
+    font-size: 1rem;
     margin-top: 5px;
   }
   .time{
     color: #7e90aa;
-    font-size: .9em;
+    font-size: .9rem;
     margin-bottom: 5px;
   }
   &:hover{
@@ -540,6 +573,7 @@
 }
 .header-profile-wrapper .top .left{
   color: #1a457b;
+  font-size: .9rem;
 }
 .header-profile-wrapper .content{
   margin-top: 10px;
@@ -550,6 +584,14 @@
 }
 .header-profile-wrapper .content .right{
   width: 65%;
+  p{
+    color: #000;
+    font-size: 1rem!important;
+    margin-bottom: 5px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 .header-profile-wrapper .content .right .title{
   font-size: 1.33em;
