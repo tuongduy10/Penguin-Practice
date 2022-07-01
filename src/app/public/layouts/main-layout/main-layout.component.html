@@ -58,6 +58,40 @@
             </li>
           </ul>
         </li>
+        <li class="item" nz-submenu [nzTitle]="adminMenu">
+          <ng-template #adminMenu>
+            <div class="item-link">
+              <span class="icon"><svg><use xlink:href="./assets/svg/icons.svg#admin-menu"></use></svg></span>
+              <span class="text">{{ "MENU.ADMIN.INDEX" | translate }}</span>
+            </div>
+          </ng-template>
+          <ul class="children">
+            <li class="item level-1" nz-menu-item>
+              <a href="" class="item-link">
+                <span class="icon flex-center">
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
+                </span>
+                <span class="text">{{ "MENU.ADMIN.BROAD_MSG" | translate }}</span>
+              </a>
+            </li>
+            <li class="item level-1" nz-menu-item>
+              <a href="" class="item-link">
+                <span class="icon flex-center">
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
+                </span>
+                <span class="text">{{ "MENU.ADMIN.EXCHANGE_RATE" | translate }}</span>
+              </a>
+            </li>
+            <li class="item level-1" nz-menu-item>
+              <a href="" class="item-link">
+                <span class="icon flex-center">
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
+                </span>
+                <span class="text">{{ "MENU.ADMIN.USER_MNGT" | translate }}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
       <div class="sidebar-copy">{{ 'copyright' | translate }}</div>
       <div class="sidebar-version">#22/06/29:1426_TW_ver_#66</div>
