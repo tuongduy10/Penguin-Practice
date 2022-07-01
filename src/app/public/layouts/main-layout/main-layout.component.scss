@@ -133,6 +133,9 @@
     }
   }
 }
+.sidebar-menu .item .children{
+  background-color: #fff;
+}
 .sidebar-menu .item .children .item.level-1 .item-link:hover{
   background-color: #eaeffb;
   .text{
@@ -159,6 +162,9 @@
     width: 25px;
     height: 25px;
     fill: #1a457b;
+    padding-right: 8px;
+  }
+  i{
     padding-right: 8px;
   }
 }

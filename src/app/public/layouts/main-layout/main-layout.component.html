@@ -21,37 +21,39 @@
         <li class="item" nz-menu-item>
           <a class="item-link" routerLink="/tw/home" routerLinkActive="active">
             <span class="icon"><svg><use xlink:href="./assets/svg/icons.svg#home"></use></svg></span>
-            <span class="text">Home</span>
+            <span class="text">{{ "MENU.HOME" | translate }}</span>
           </a>
         </li>
-        <!-- <li class="item" nz-menu-item>
-          <a class="item-link" routerLinkActive="active">
-            <span class="icon"><svg><use xlink:href="./assets/svg/icons.svg#database"></use></svg></span>
-            <span class="text">Master Data</span>
-          </a>
-        </li> -->
         <li class="item" nz-submenu [nzTitle]="masterData">
           <ng-template #masterData>
             <div class="item-link">
               <span class="icon"><svg><use xlink:href="./assets/svg/icons.svg#database"></use></svg></span>
-              <span class="text">Master Data</span>
+              <span class="text">{{ "MENU.MASTER_DATA.INDEX" | translate }}</span>
             </div>
           </ng-template>
           <ul class="children">
             <li class="item level-1" nz-menu-item>
               <a href="" class="item-link">
-                <span class="icon">
-                  <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="25px" height="25px" data-icon="right" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg>
+                <span class="icon flex-center">
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
                 </span>
-                <span class="text">Box / Single Mapping</span>
+                <span class="text">{{ "MENU.MASTER_DATA.BOX_UNBOX" | translate }}</span>
               </a>
             </li>
             <li class="item level-1" nz-menu-item>
               <a href="" class="item-link">
-                <span class="icon">
-                  <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="25px" height="25px" data-icon="right" aria-hidden="true"><path d="M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z"></path></svg>
+                <span class="icon flex-center">
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
                 </span>
-                <span class="text">Bundle Setting</span>
+                <span class="text">{{ "MENU.MASTER_DATA.BUNDLE" | translate }}</span>
+              </a>
+            </li>
+            <li class="item level-1" nz-menu-item>
+              <a href="" class="item-link">
+                <span class="icon flex-center">
+                  <i nz-icon nzType="right" nzTheme="outline"></i>
+                </span>
+                <span class="text">{{ "MENU.MASTER_DATA.BUNDLE" | translate }}</span>
               </a>
             </li>
           </ul>

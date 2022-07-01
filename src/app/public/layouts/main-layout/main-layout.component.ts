@@ -56,6 +56,7 @@ export class MainLayoutComponent implements OnInit {
       // languages
       this.translateService.use(profile.language);
       this.selectedLang = profile.language;
+      this.cookieService.set('lang', profile.language);
       // fontsize
       this.selectedFontSize = profile.fontSize ?? "0";
       document.body.classList.value = "global-fs-" + (profile.fontSize ?? "0");
