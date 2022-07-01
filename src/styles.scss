@@ -207,7 +207,14 @@ nz-option-container{
   background-color: #fff;
   color: #7e90aa;
 }
-
+.sidebar-menu .item{
+  .ant-menu-submenu-title {
+    padding: 0 !important;
+    i{
+      display: none;
+    }
+  }
+}
 .global-fs-0 *{
   font-size: 1rem;
 }
